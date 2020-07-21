@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+	View,
+	StatusBar as RNStatusbar,
+	StyleSheet,
+	SafeAreaView,
+	Platform,
+	Text,
+	Image,
+	ImageBackground,
+} from "react-native";
+
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import ViewImageScreen from "./app/screens/ViewImageScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	// <View style={styles.container}>
+	// <SafeAreaView>
+	// </SafeAreaView>
+	// 	<StatusBar style="auto" />
+	// </View>
+	return <WelcomeScreen />;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		// alignItems: "center",
+		// backgroundColor: "dodgerblue",
+		flex: 1,
+		// justifyContent: "center",
+		paddingTop: Platform.OS === "android" ? RNStatusbar.currentHeight : 0,
+	},
 });
