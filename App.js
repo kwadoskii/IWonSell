@@ -1,34 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-	View,
-	StatusBar as RNStatusbar,
-	StyleSheet,
-	SafeAreaView,
-	Platform,
-	Text,
-	Image,
-	ImageBackground,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import MessagesScreen from "./app/screens/MessagesScreen";
 
 export default function App() {
-	// <View style={styles.container}>
-	// <SafeAreaView>
-	// </SafeAreaView>
-	// 	<StatusBar style="auto" />
-	// </View>
-	return <WelcomeScreen />;
+  return <MessagesScreen />;
 }
 
-const styles = StyleSheet.create({
-	container: {
-		// alignItems: "center",
-		// backgroundColor: "dodgerblue",
-		flex: 1,
-		// justifyContent: "center",
-		paddingTop: Platform.OS === "android" ? RNStatusbar.currentHeight : 0,
-	},
-});
+const styles = StyleSheet.create({});
