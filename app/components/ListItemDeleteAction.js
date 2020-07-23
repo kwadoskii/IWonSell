@@ -16,9 +16,9 @@ export default function ListItemDeleteAction({ onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.danger,
-    width: "20%",
-    justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.danger,
+    justifyContent: "center",
+    width: "20%",
   },
 });

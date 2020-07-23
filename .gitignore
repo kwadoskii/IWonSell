@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 Test2.js
 Test.js
+jsconfig.json
 
 # macOS
 .DS_Store

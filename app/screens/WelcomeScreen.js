@@ -1,5 +1,4 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { View, Text, ImageBackground, StyleSheet, Image } from "react-native";
 
 import AppButton from "../components/AppButton";
@@ -22,7 +21,6 @@ export default function WelcomeScreen() {
           <AppButton title="login" />
           <AppButton title="register" color="secondary" />
         </View>
-        {/* <StatusBar style="auto" /> */}
       </Screen>
     </ImageBackground>
   );

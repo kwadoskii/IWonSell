@@ -7,11 +7,15 @@ import colors from "../config/colors";
 export default function Card({ image, subTitle, title }) {
   return (
     <View style={styles.card}>
-      <Image source={image} style={styles.image} />
+      <Image source={image} style={styles.image} resizeMode="cover" />
 
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+        <AppText numberOfLines={2} style={styles.title}>
+          {title}
+        </AppText>
+        <AppText numberOfLines={1} style={styles.subTitle}>
+          {subTitle}
+        </AppText>
       </View>
     </View>
   );
@@ -28,8 +32,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: "100%",
     height: 200,
+    width: "100%",
   },
   subTitle: {
     color: colors.secondary,
