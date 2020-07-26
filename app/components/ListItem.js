@@ -7,6 +7,7 @@ import AppText from "./AppText";
 import colors from "../config/colors";
 
 export default function ListItem({
+  backgroundColor = colors.white,
   image,
   IconComponent,
   onPress,
@@ -17,7 +18,14 @@ export default function ListItem({
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
-        <View style={styles.container}>
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: backgroundColor,
+            },
+          ]}
+        >
           {IconComponent}
           {image && <Image source={image} style={styles.image} />}
           <View style={styles.detailsContainer}>
@@ -40,7 +48,6 @@ export default function ListItem({
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: colors.white,
     flexDirection: "row",
     padding: 15,
   },

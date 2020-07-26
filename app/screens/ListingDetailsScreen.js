@@ -6,13 +6,15 @@ import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 
-export default function ListingDetailsScreen() {
+export default function ListingDetailsScreen({ route }) {
+  const listing = route.params;
+
   return (
-    <Screen>
-      <Image source={require("../assets/jacket.jpg")} style={styles.image} />
+    <Screen style={styles.container}>
+      <Image source={listing.image} style={styles.image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{listing.title}</AppText>
+        <AppText style={styles.price}>${listing.price}</AppText>
 
         <View style={styles.userContainer}>
           <ListItem
@@ -27,6 +29,9 @@ export default function ListingDetailsScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 0,
+  },
   detailsContainer: {
     padding: 20,
   },

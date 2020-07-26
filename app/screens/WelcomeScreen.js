@@ -3,9 +3,10 @@ import { View, Text, ImageBackground, StyleSheet, Image } from "react-native";
 
 import AppButton from "../components/AppButton";
 import colors from "../config/colors";
+import routes from "../navigation/route";
 import Screen from "../components/Screen";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       blurRadius={10}
@@ -18,8 +19,12 @@ export default function WelcomeScreen() {
           <Text style={styles.tagline}>Sell your Stuffs Anytime!</Text>
         </View>
         <View style={styles.buttonsContainer}>
-          <AppButton title="login" />
-          <AppButton title="register" color="secondary" />
+          <AppButton title="login" onPress={() => navigation.navigate(routes.LOGIN)} />
+          <AppButton
+            title="register"
+            color="secondary"
+            onPress={() => navigation.navigate(routes.REGISTER)}
+          />
         </View>
       </Screen>
     </ImageBackground>
