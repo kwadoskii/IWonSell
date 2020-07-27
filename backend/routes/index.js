@@ -8,7 +8,7 @@ const user = require("./user");
 
 router.use("/auth", auth);
 router.use("/category", category);
-router.use("/listings", verify, listing);
+router.use("/listings", listing);
 router.use("/users", user);
 
 router.use(function (req, res) {

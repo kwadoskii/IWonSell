@@ -37,8 +37,39 @@ exports.getOne = (req, res) => {
 };
 
 exports.add = (req, res) => {
-  const { title, price, description, location, category } = req.body;
-  const listing = new Listing({ title, price, description, location, category });
+  const {
+    title,
+    price,
+    description,
+    location,
+    category,
+    url,
+    thumbnailUrl,
+    user,
+  } = req.body;
+
+  const arrangeImages = () => {
+    let final = [];
+    for (let key in url) {
+      final.push({
+        url: process.env.UPLOAD_PATH + url[key],
+        thumbnailUrl: process.env.UPLOAD_PATH + url[key].replace("_full.", "_thumb."),
+      });
+    }
+    return final;
+  };
+
+  const images = arrangeImages();
+
+  const listing = new Listing({
+    title,
+    price,
+    description,
+    location,
+    category,
+    user,
+    images,
+  });
 
   listing
     .save()
@@ -56,6 +87,8 @@ exports.add = (req, res) => {
         data: { error: err },
       })
     );
+
+  // res.send(images);
 };
 
 exports.edit = (req, res) => {

@@ -5,12 +5,24 @@ const listingSchema = new Schema(
   {
     title: { type: String, required: true },
     price: { type: String, required: true, max: 8 },
-    // images: { type: Array, reuired: true },
+    images: [
+      {
+        url: { type: String },
+        thumbnailUrl: { type: String },
+      },
+    ],
     description: { type: String, required: true },
-    location: { type: String },
+    location: {
+      latitude: { type: String },
+      longitude: { type: String },
+    },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
   },
   {

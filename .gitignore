@@ -11,7 +11,8 @@ web-build/
 Test*.js
 jsconfig.json
 /backend/node_modules
-/backend/node_modules/.env
+/backend/uploads
+/backend/.env
 
 # macOS
 .DS_Store

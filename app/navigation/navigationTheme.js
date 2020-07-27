@@ -2,7 +2,7 @@ import { DefaultTheme } from "@react-navigation/native";
 
 import colors from "../config/colors";
 
-console.log(DefaultTheme);
+// console.log(DefaultTheme);
 export default {
   ...DefaultTheme,
   colors: {
