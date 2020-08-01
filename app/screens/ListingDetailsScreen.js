@@ -11,10 +11,10 @@ export default function ListingDetailsScreen({ route }) {
 
   return (
     <Screen style={styles.container}>
-      <Image source={listing.image} style={styles.image} />
+      <Image source={{ uri: listing.images[0].url }} style={styles.image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{listing.title}</AppText>
-        <AppText style={styles.price}>${listing.price}</AppText>
+        <AppText style={styles.price}>₦{listing.price}</AppText>
 
         <View style={styles.userContainer}>
           <ListItem

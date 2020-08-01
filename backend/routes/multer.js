@@ -64,7 +64,6 @@ const thumbnailImages = async (req, res, next) => {
       const newFilename = `iwonsell_${filename}_thumb.jpeg`;
 
       await sharp(file.buffer)
-        // .resize(640, 320)
         .toFormat("jpeg")
         .jpeg({ quality: 15 })
         .toFile(`uploads/${newFilename}`);

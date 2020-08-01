@@ -2,7 +2,7 @@ const Listing = require("../models/listingModel");
 
 exports.getAll = (req, res) => {
   Listing.find()
-    .sort({ updatedAt: 1 })
+    .sort({ updatedAt: -1 })
     .then((listings) => {
       res.status(200).send({
         status: "success",
@@ -65,11 +65,12 @@ exports.add = (req, res) => {
     title,
     price,
     description,
-    location,
     category,
     user,
     images,
   });
+
+  if (location) listing.location = JSON.parse(location);
 
   listing
     .save()
@@ -87,8 +88,6 @@ exports.add = (req, res) => {
         data: { error: err },
       })
     );
-
-  // res.send(images);
 };
 
 exports.edit = (req, res) => {

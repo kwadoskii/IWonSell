@@ -3,7 +3,7 @@ const router = require("express").Router();
 const auth = require("./auth");
 const category = require("./category");
 const listing = require("./listing");
-const verify = require("../middlewares/verifty");
+const verify = require("../middlewares/verify");
 const user = require("./user");
 
 router.use("/auth", auth);
