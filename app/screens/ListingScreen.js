@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
+import { useNetInfo } from "@react-native-community/netinfo";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
@@ -12,6 +13,7 @@ import ActivityIndicator from "../components/ActivityIndicator";
 import useApi from "../hooks/useApi";
 
 export default function ListingScreen({ navigation }) {
+  const netInfo = useNetInfo();
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
@@ -19,9 +21,13 @@ export default function ListingScreen({ navigation }) {
   }, []);
 
   const getListingsApi = useApi(listingsApi.getListings);
+  const paddingTop =
+    netInfo.type !== "unknown" && netInfo.isInternetReachable === false
+      ? { paddingTop: 0 }
+      : "";
 
   return (
-    <Screen style={styles.screen}>
+    <Screen style={[styles.screen, paddingTop]}>
       {getListingsApi.error && (
         <>
           <AppText>Could not retrieve the listings.</AppText>
@@ -43,6 +49,7 @@ export default function ListingScreen({ navigation }) {
             subTitle={`₦${item.price}`}
             imageUrl={item.images[0].url}
             onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            thumbnailUrl={item.images[0].thumbnailUrl}
           />
         )}
         showsVerticalScrollIndicator={false}
@@ -54,6 +61,7 @@ export default function ListingScreen({ navigation }) {
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
+    // paddingTop: 0,
     backgroundColor: colors.light,
   },
 });

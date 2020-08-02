@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 
 import AppText from "../components/AppText";
 import colors from "../config/colors";
@@ -11,7 +12,12 @@ export default function ListingDetailsScreen({ route }) {
 
   return (
     <Screen style={styles.container}>
-      <Image source={{ uri: listing.images[0].url }} style={styles.image} />
+      <Image
+        uri={listing.images[0].url}
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+        style={styles.image}
+        tint="light"
+      />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{listing.title}</AppText>
         <AppText style={styles.price}>₦{listing.price}</AppText>
@@ -19,7 +25,7 @@ export default function ListingDetailsScreen({ route }) {
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/mosh.jpg")}
-            title="Austin Offor"
+            title="Austin Ofor"
             subTitle="5 Listings"
           />
         </View>

@@ -10,6 +10,7 @@ export default function ListItem({
   backgroundColor = colors.white,
   image,
   IconComponent,
+  noChevron = false,
   onPress,
   subTitle,
   title,
@@ -38,7 +39,13 @@ export default function ListItem({
               </AppText>
             )}
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={25} color={colors.medium} />
+          {!noChevron && (
+            <MaterialCommunityIcons
+              name="chevron-right"
+              size={25}
+              color={colors.medium}
+            />
+          )}
         </View>
       </TouchableHighlight>
     </Swipeable>

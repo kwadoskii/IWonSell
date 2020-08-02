@@ -13,14 +13,14 @@ exports.login = (req, res) => {
         res
           .status(400)
           .send({ status: "error", data: { message: "Invalid email and/or password" } });
+
       const token = jwt.sign(
         {
           user: { firstname: user.firstname, lastname: user.lastname, email: user.email },
         },
         process.env.TOKEN_SECRET
       );
-      res.send(token);
+      res.status(200).send({ status: "success", data: token });
     })
     .catch((err) => res.status(400).send({ status: "error", data: { error: err } }));
-  //   res.send("auth");
 };

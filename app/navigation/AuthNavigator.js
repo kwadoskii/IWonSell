@@ -11,10 +11,10 @@ const Stack = createStackNavigator();
 export default function AuthNavigator() {
   return (
     <Stack.Navigator
-    //   screenOptions={{
-    //     headerStyle: { backgroundColor: colors.primary },
-    //     headerTintColor: colors.white,
-    //   }}
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.primary },
+        headerTintColor: colors.white,
+      }}
     >
       <Stack.Screen
         name="Welcome"

@@ -13,7 +13,9 @@ const validationSchema = yup.object().shape({
   password: yup.string().required().min(4).label("Password"),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password")], "Passwords must be the same"),
+    .required()
+    .oneOf([yup.ref("password"), null], "Passwords must be the same")
+    .label("Confirm Password"),
 });
 
 export default function RegisterScreen() {
