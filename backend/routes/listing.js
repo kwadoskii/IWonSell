@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const listingController = require("../controllers/listingController");
-const upload = require("../routes/multer");
+const upload = require("../middlewares/multer");
 
 router.get("/", listingController.getAll);
+router.get("/user/:id", listingController.getUserListings);
 router.get("/:id", listingController.getOne);
 router.post(
   "/",

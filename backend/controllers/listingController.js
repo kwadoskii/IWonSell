@@ -17,6 +17,28 @@ exports.getAll = (req, res) => {
     );
 };
 
+exports.getUserListings = (req, res) => {
+  const { id } = req.params;
+  Listing.find({ user: id })
+    .sort({ createdAt: -1 })
+    .then((listings) => {
+      if (!listings)
+        res
+          .status(400)
+          .send({ status: "error", data: { message: "User has no listings yet." } });
+      res.status(200).send({
+        status: "success",
+        data: listings,
+      });
+    })
+    .catch((err) =>
+      res.status(400).send({
+        status: "error",
+        data: { error: err },
+      })
+    );
+};
+
 exports.getOne = (req, res) => {
   const { id } = req.params;
   Listing.findOne({ _id: id })

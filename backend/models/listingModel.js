@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const listingSchema = new Schema(
   {
-    title: { type: String, required: true },
-    price: { type: String, required: true, max: 8 },
+    title: { type: String, required: true, trim: true },
+    price: { type: String, required: true, max: 10 },
     images: [
       {
         url: { type: String },

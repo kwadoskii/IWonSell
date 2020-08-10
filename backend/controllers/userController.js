@@ -36,6 +36,15 @@ exports.add = (req, res) => {
   const hashPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync());
 
   const user = new User({ firstname, lastname, email });
+
+  User.findOne({ email: email })
+    .then((user) => {
+      if (user)
+        res
+          .status(400)
+          .send({ status: "error", data: { message: "Email already exist!" } });
+    })
+    .catch((err) => res.status(400).send({ status: "error", data: { error: err } }));
   user.password = hashPassword;
   user
     .save()
