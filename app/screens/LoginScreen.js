@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import * as yup from "yup";
 
 import { AppForm, AppFormField, ErrorMessage, SubmitButton } from "../components/forms";
@@ -37,9 +37,7 @@ export default function LoginScreen() {
         onSubmit={handlesSubmit}
         validationSchema={validationSchema}
       >
-        <View style={styles.error}>
-          <ErrorMessage error={errorMessage} visible={loginFailed} />
-        </View>
+        <ErrorMessage error={errorMessage} visible={loginFailed} />
         <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
@@ -67,9 +65,6 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 15,
-  },
-  error: {
-    alignItems: "center",
   },
   logo: {
     alignSelf: "center",

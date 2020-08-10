@@ -16,6 +16,8 @@ const menuItems = [
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
+    targetScreen: routes.MY_LISTINGS,
+    targetScreenParams: { user: "" },
   },
   {
     title: "My Messages",
@@ -24,6 +26,14 @@ const menuItems = [
       backgroundColor: colors.secondary,
     },
     targetScreen: routes.MESSAGES,
+  },
+  {
+    title: "Change Password",
+    icon: {
+      name: "key",
+      backgroundColor: colors.primary,
+    },
+    // targetScreen: "",
   },
 ];
 
@@ -50,7 +60,9 @@ export default function AccountScreen({ navigation }) {
               IconComponent={
                 <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
               }
-              onPress={() => navigation.navigate(item.targetScreen)}
+              onPress={() =>
+                navigation.navigate(item.targetScreen, item.targetScreenParams)
+              }
             />
           )}
         />
@@ -67,7 +79,7 @@ export default function AccountScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20,
+    marginBottom: 20,
   },
   screen: {
     backgroundColor: colors.light,

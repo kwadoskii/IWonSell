@@ -9,9 +9,10 @@ const addListing = (listing, onUploadProgress) => {
   data.append("title", listing.title);
   data.append("price", listing.price);
   data.append("description", listing.description);
-  data.append("category", listing.category.value);
+  data.append("category", listing.category._id);
+  data.append("user", listing.user);
 
-  listing.images.forEach((image, index) =>
+  listing.images.forEach((image) =>
     data.append("images", {
       name: image,
       type: "image/jpeg",
@@ -25,7 +26,12 @@ const addListing = (listing, onUploadProgress) => {
   });
 };
 
+const getUserListings = (userId) => {
+  return client.get(`${endpoint}/user/${userId}`);
+};
+
 export default {
   addListing,
   getListings,
+  getUserListings,
 };

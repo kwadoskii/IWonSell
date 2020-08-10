@@ -13,6 +13,7 @@ export default function ListItem({
   noChevron = false,
   onPress,
   subTitle,
+  style,
   title,
   renderRightActions,
 }) {
@@ -24,6 +25,7 @@ export default function ListItem({
             styles.container,
             {
               backgroundColor: backgroundColor,
+              ...style,
             },
           ]}
         >

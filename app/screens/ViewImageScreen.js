@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 
-export default function ViewImageScreen() {
+export default function ViewImageScreen({ route }) {
   return (
     <Screen style={styles.container}>
       <View style={styles.closeIcon}>
@@ -16,7 +16,7 @@ export default function ViewImageScreen() {
       </View>
       <Image
         resizeMode="contain"
-        source={require("../assets/chair.jpg")}
+        source={{ uri: route.params.listing.images[0].url }}
         style={styles.image}
       />
     </Screen>
