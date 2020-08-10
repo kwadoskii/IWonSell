@@ -1,9 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import colors from "../config/colors";
 import AccountScreen from "../screens/AccountScreen";
+import colors from "../config/colors";
 import MessagesScreen from "../screens/MessagesScreen";
+import MessageDetailsScreen from "../screens/MessageDetailsScreen";
+import MyListingsScreen from "../screens/MyListingsScreen";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,18 @@ export default function AccountNavigator() {
         // options={{ headerShown: false }}
       />
       <Stack.Screen name="Messages" component={MessagesScreen} />
+      <Stack.Screen
+        name="MessageDetails"
+        component={MessageDetailsScreen}
+        options={({ route: { params } }) => ({
+          title: params.item.title,
+        })}
+      />
+      <Stack.Screen
+        name="MyListings"
+        component={MyListingsScreen}
+        options={{ title: "My Listings" }}
+      />
     </Stack.Navigator>
   );
 }

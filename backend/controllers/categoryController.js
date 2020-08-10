@@ -3,7 +3,7 @@ const Category = require("../models/categoryModel");
 exports.getAll = (req, res) => {
   Category.find()
     .sort({ name: 1 })
-    .select("name")
+    .select(["name", "icon", "backgroundColor"])
     .then((categories) => {
       res.status(200).send({
         status: "success",
@@ -21,7 +21,7 @@ exports.getAll = (req, res) => {
 exports.getOne = (req, res) => {
   const { id } = req.params;
   Category.findOne({ _id: id })
-    .select("name")
+    .select(["name", "icon", "backgroundColor"])
     .then((category) => {
       if (!category)
         res
@@ -41,8 +41,8 @@ exports.getOne = (req, res) => {
 };
 
 exports.add = (req, res) => {
-  const { name } = req.body;
-  const category = new Category({ name });
+  const { name, icon, backgroundColor } = req.body;
+  const category = new Category({ name, icon, backgroundColor });
 
   category
     .save()
@@ -63,7 +63,7 @@ exports.add = (req, res) => {
 };
 
 exports.edit = (req, res) => {
-  const { name } = req.body;
+  const { body } = req;
   const { id } = req.params;
 
   Category.findById(id)
@@ -72,7 +72,7 @@ exports.edit = (req, res) => {
         res
           .status(400)
           .send({ status: "error", data: { message: "Category not found" } });
-      Category.findByIdAndUpdate(id, { name }, { new: true })
+      Category.findByIdAndUpdate(id, { ...body }, { new: true })
         .then((category) => {
           res.status(201).send({
             status: "success",

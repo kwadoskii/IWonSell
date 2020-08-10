@@ -5,6 +5,7 @@ import ListItem from "../components/ListItem";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
+import route from "../navigation/route";
 
 const initialMessages = [
   {
@@ -27,7 +28,7 @@ const initialMessages = [
   },
 ];
 
-export default function MessagesScreen() {
+export default function MessagesScreen({ navigation }) {
   const [messages, setMessages] = useState(initialMessages);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -45,7 +46,7 @@ export default function MessagesScreen() {
             title={item.title}
             subTitle={item.description}
             image={item.image}
-            onPress={() => console.log(item)}
+            onPress={() => navigation.navigate(route.MESSAGE_DETAILS, { item })}
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
@@ -62,7 +63,7 @@ export default function MessagesScreen() {
               image: require("../assets/mosh.jpg"),
             },
           ]);
-          //   setRefreshing(false);
+          setRefreshing(false);
         }}
       />
     </Screen>

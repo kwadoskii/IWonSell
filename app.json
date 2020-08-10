@@ -17,6 +17,15 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.kwadoskii.iwonsell",
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyACwbu_ZLW_PMWl7jw8Xs1Gc3ipLfHrTQg"
+        }
+      }
+    },
     "web": {
       "favicon": "./app/assets/favicon.png"
     }

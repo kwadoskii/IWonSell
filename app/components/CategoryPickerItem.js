@@ -8,7 +8,7 @@ export default function CategoryPickerItem({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Icon backgroundColor={item.backgroundColor} name={item.icon} size={80} />
-      <AppText style={styles.label}>{item.label}</AppText>
+      <AppText style={styles.name}>{item.name}</AppText>
     </TouchableOpacity>
   );
 }
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "33%",
   },
-  label: {
+  name: {
     marginTop: 5,
     textAlign: "center",
   },
