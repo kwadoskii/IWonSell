@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, TouchableWithoutFeedback } from "react-na
 import { Image } from "react-native-expo-image-cache";
 
 import AppText from "../components/AppText";
+import AppMapView from "../components/AppMapView";
 import colors from "../config/colors";
 import formatCurrency from "../utility/formatCurrency";
 import ListItem from "../components/ListItem";
@@ -35,7 +36,6 @@ export default function ListingDetailsScreen({ navigation, route }) {
             preview={{ uri: listing.images[0].thumbnailUrl }}
             style={styles.image}
             tint="light"
-            o
           />
         </View>
       </TouchableWithoutFeedback>
@@ -45,9 +45,15 @@ export default function ListingDetailsScreen({ navigation, route }) {
         <AppText style={styles.price}>{`₦${formatCurrency(listing.price)}`}</AppText>
         <AppText style={styles.description}>{listing.description}</AppText>
 
+        {listing.location && (
+          <View style={styles.mapContainer}>
+            <AppMapView region={listing.location} />
+          </View>
+        )}
+
         <View style={styles.userContainer}>
           <ListItem
-            image={require("../assets/mosh.jpg")}
+            // image={require("../assets/mosh.jpg")} //change
             title={
               getListingUser.data.firstname !== undefined &&
               `${getListingUser.data.firstname} ${getListingUser.data.lastname}`
@@ -73,6 +79,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
+    marginBottom: 5,
     marginTop: 0,
   },
   detailsContainer: {
@@ -82,6 +89,11 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 300,
+    width: "100%",
+  },
+  mapContainer: {
+    height: 160,
+    marginVertical: 15,
     width: "100%",
   },
   price: {
@@ -94,6 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   userContainer: {
-    marginVertical: 40,
+    marginTop: 15,
+    marginBottom: 55,
   },
 });

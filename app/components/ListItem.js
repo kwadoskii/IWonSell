@@ -8,6 +8,7 @@ import colors from "../config/colors";
 
 export default function ListItem({
   backgroundColor = colors.white,
+  badge = 0,
   image,
   IconComponent,
   noChevron = false,
@@ -30,7 +31,7 @@ export default function ListItem({
           ]}
         >
           {IconComponent}
-          {image && <Image source={image} style={styles.image} />}
+          {image && <Image source={{ uri: image }} style={styles.image} />}
           <View style={styles.detailsContainer}>
             <AppText numberOfLines={1} style={styles.title}>
               {title}
@@ -48,6 +49,11 @@ export default function ListItem({
               color={colors.medium}
             />
           )}
+          {badge !== 0 && (
+            <View style={styles.badgeContainer}>
+              <AppText style={styles.badge}>{badge}</AppText>
+            </View>
+          )}
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -55,6 +61,20 @@ export default function ListItem({
 }
 
 const styles = StyleSheet.create({
+  badge: {
+    color: colors.white,
+    fontSize: 16,
+    padding: 5,
+    fontWeight: "bold",
+  },
+  badgeContainer: {
+    alignItems: "center",
+    backgroundColor: colors.primary,
+    borderRadius: 40,
+    justifyContent: "center",
+    minHeight: 20,
+    minWidth: 20,
+  },
   container: {
     alignItems: "center",
     flexDirection: "row",
@@ -62,8 +82,8 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     flex: 1,
-    marginLeft: 10,
     justifyContent: "center",
+    marginLeft: 10,
   },
   image: {
     borderRadius: 35,

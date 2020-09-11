@@ -26,7 +26,7 @@ export default function MyListingsScreen({ route }) {
 
   return (
     <>
-      <ActivityIndicator visible={false} />
+      <ActivityIndicator visible={getUserListingsApi.loading} />
       <Screen style={[styles.screen]}>
         {getUserListingsApi.error && (
           <>

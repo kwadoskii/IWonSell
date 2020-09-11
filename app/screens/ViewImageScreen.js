@@ -8,12 +8,12 @@ import Screen from "../components/Screen";
 export default function ViewImageScreen({ route }) {
   return (
     <Screen style={styles.container}>
-      <View style={styles.closeIcon}>
+      {/* <View style={styles.closeIcon}>
         <MaterialCommunityIcons name="close" color={colors.white} size={35} />
       </View>
       <View style={styles.deleteIcon}>
         <MaterialCommunityIcons name="trash-can-outline" color={colors.white} size={35} />
-      </View>
+      </View> */}
       <Image
         resizeMode="contain"
         source={{ uri: route.params.listing.images[0].url }}

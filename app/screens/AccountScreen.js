@@ -46,7 +46,7 @@ export default function AccountScreen({ navigation }) {
         <ListItem
           title={`${user.firstname} ${user.lastname}`}
           subTitle={user.email}
-          image={require("../assets/mosh.jpg")}
+          // image={require("../assets/mosh.jpg")} //change this to a cloud image
         />
       </View>
       <View style={styles.container}>

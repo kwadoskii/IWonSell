@@ -40,7 +40,6 @@ export default function ListingEditScreen() {
 
   const handleSubmit = async (listing, { resetForm }) => {
     setProgress(0);
-    console.log(listing);
     setUploadVisible(true);
     const result = await listingsApi.addListing(
       { ...listing, location, user: user.id },

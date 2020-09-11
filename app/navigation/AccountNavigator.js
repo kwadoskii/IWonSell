@@ -27,7 +27,7 @@ export default function AccountNavigator() {
         name="MessageDetails"
         component={MessageDetailsScreen}
         options={({ route: { params } }) => ({
-          title: params.item.title,
+          title: params.title,
         })}
       />
       <Stack.Screen
